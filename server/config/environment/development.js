@@ -10,9 +10,9 @@ module.exports = {
 
   seedDB: true,
   twit: {
-    consumer_key:         'qUrbMzCaig1RAuY5rGnNSjtUg'
-    , consumer_secret:      '8CKyVTb9WDrXn7u9038W521nPeXCoCDRTKcLN1GR9KyviCJ2Gw'
-    , access_token:         '140354657-967IYAJAJqSBkSciPIJZXoYjtoczcuacgrlkotc5'
-    , access_token_secret:  'IMt97X6pIOvNkeXuKC4YlfxRkSKuduyuAXQPaOc4QvRQo'
+    consumer_key:         process.env.consumer_key
+    , consumer_secret:      process.env.consumer_secret
+    , access_token:         process.env.access_token
+    , access_token_secret:  process.env.access_token_secret
   }
 };

@@ -5,11 +5,8 @@ var sentiment = require('sentiment');
 var twitConfig = require("./config/environment").twit;
 var T = new Twit(twitConfig);
 
-var intervalPeriod = 3000;
 
-module.exports = function(socketio) {
-      
-    return Rx.Observable.create(function (observer) {
+    var published = Rx.Observable.create(function (observer) {
         T.get('search/tweets', { geocode: "1.3525272,103.9448637,42km"}, function(err, data, response) {
             if (err)
                 observer.onError(err);
@@ -18,13 +15,8 @@ module.exports = function(socketio) {
                 observer.onCompleted();    
             }
         });
-    
-        // Note that this is optional, you do not have to return this if you require no cleanup
-        return function () {
-            console.log('disposedd');
-        };
     })
-    .delay(5000)
+    .delay(3000)
     .repeat()
     .retry()
     .selectMany(function(response){
@@ -57,16 +49,7 @@ module.exports = function(socketio) {
         
         return allTrue(tweet);
     })
-    .subscribe(
-        function (x) {
-          console.log('Next: %j', x);
-          
-          socketio.emit('tweet:new', x);
-        },
-        function (err) {
-            console.log('Error: ' + err);
-        },
-        function () {
-            console.log('Completed');
-    	});	
-};
+    .publish()
+    .refCount();
+
+module.exports = published;

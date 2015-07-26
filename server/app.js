@@ -15,7 +15,7 @@ var config = require('./config/environment');
 mongoose.connect(config.mongo.uri, config.mongo.options);
 
 // Populate DB with sample data
-if(config.seedDB) { require('./config/seed'); }
+if (config.seedDB) { require('./config/seed'); }
 
 // Setup server
 var app = express();
@@ -33,7 +33,22 @@ server.listen(config.port, config.ip, function () {
   console.log('Express server listening on %d, in %s mode', config.port, app.get('env'));
 });
 
-require("./job")(socketio);
+var reactiveTweets = require("./reactiveTweets");
+
+socketio.on('connection', function(client){ 
+    console.log("%j connected", client);
+    
+    var subscription = reactiveTweets.subscribe(function(tweet){
+      
+        console.log('On Next: %j', tweet);
+        socketio.emit("tweet:new", tweet);
+    });
+    
+    client.on("disconnect", function(){
+      console.log("%j disconnect", client);
+      subscription.dispose();
+    });
+});
 
 // Expose app
 exports = module.exports = app;
