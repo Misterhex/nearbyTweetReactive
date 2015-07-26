@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+        
+        <div ng-repeat="tweet in tweets | reverse" 
+          ng-class="['alert', 
+          { 'alert-success': tweet.sentiment.score > 0 }, 
+          { 'alert-danger': tweet.sentiment.score < 0 },
+          { 'alert-info': tweet.sentiment.score === 0 }]" 
+          role="alert">
+              <sentiment ratings="tweet.sentiment.score"></sentiment>
+               
+              <br ng-if="tweet.sentiment.score !== 0" /><br ng-if="tweet.sentiment.score !== 0" />
+              
+              <p>{{tweet.text}}</p>
+              <br/>
+              <cite title="Source Title">{{tweet.screen_name}} , {{tweet.created_at}}</cite>
+        </div>
+        
+    </div>
+  </div>
+</div>
