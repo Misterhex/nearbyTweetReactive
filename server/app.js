@@ -36,7 +36,7 @@ server.listen(config.port, config.ip, function () {
 var reactiveTweets = require("./reactiveTweets");
 
 socketio.on('connection', function(client){ 
-    console.log("%j connected", client);
+    console.log("client connected", client);
     
     var subscription = reactiveTweets.subscribe(function(tweet){
       
@@ -45,7 +45,7 @@ socketio.on('connection', function(client){
     });
     
     client.on("disconnect", function(){
-      console.log("%j disconnect", client);
+      console.log("client disconnect", client);
       subscription.dispose();
     });
 });

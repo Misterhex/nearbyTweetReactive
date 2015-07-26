@@ -14,7 +14,7 @@
               
               <p>{{tweet.text}}</p>
               <br/>
-              <cite title="Source Title">{{tweet.screen_name}} , {{tweet.created_at}}</cite>
+              <cite ng-show="tweet.screen_name && tweet.created_at" title="Source Title">{{tweet.screen_name}} ( {{tweet.created_at}} )</cite>
         </div>
         
     </div>
