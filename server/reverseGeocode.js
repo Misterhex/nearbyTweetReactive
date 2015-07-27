@@ -1,4 +1,4 @@
-var Q = require("Q");
+var Q = require("q");
 var request = require("request");
 var googleApiKey = require("./config/environment").google_api_key;
 var format = "https://maps.googleapis.com/maps/api/geocode/json?latlng={{latlng}}&key=" + googleApiKey;
