@@ -21,7 +21,29 @@
 			// Optional arguments passed to the runtime executable.
 			"runtimeArgs": [],
 			// Environment variables passed to the program.
-			"env": { },
+			"env": {
+			  "DOMAIN": "http://localhost:9000",
+			  "SESSION_SECRET": "nearbytweetreactive-secret",
+			
+			  "FACEBOOK_ID": "app-id",
+			  "FACEBOOK_SECRET": "secret",
+			
+			  "TWITTER_ID": "app-id",
+			  "TWITTER_SECRET": "secret",
+			
+			  "GOOGLE_ID": "app-id",
+			  "GOOGLE_SECRET": "secret",
+			
+			  // Control debug level for modules using visionmedia/debug
+			  "DEBUG": "",
+			
+			  "consumer_key": "qUrbMzCaig1RAuY5rGnNSjtUg"
+			  , "consumer_secret": "8CKyVTb9WDrXn7u9038W521nPeXCoCDRTKcLN1GR9KyviCJ2Gw"
+			  , "access_token": "140354657-967IYAJAJqSBkSciPIJZXoYjtoczcuacgrlkotc5"
+			  , "access_token_secret": "IMt97X6pIOvNkeXuKC4YlfxRkSKuduyuAXQPaOc4QvRQo",
+			  "google_api_key": "AIzaSyC7ilEiecp2DLDX3z0H3Of_DVIPxXRY95A"
+			
+			},
 			// Use JavaScript source maps (if they exist).
 			"sourceMaps": false,
 			// If JavaScript source maps are enabled, the generated code is expected in this directory.

@@ -39,13 +39,10 @@ socketio.on('connection', function(client){
     console.log("client connected", client);
     
     var subscription = reactiveTweets.subscribe(function(tweet){
-      
-        console.log('On Next: %j', tweet);
         socketio.emit("tweet:new", tweet);
     });
     
     client.on("disconnect", function(){
-      console.log("client disconnect", client);
       subscription.dispose();
     });
 });

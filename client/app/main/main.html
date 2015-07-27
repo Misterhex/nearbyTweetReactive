@@ -11,9 +11,13 @@
               <sentiment ratings="tweet.sentiment.score"></sentiment>
                
               <br ng-if="tweet.sentiment.score !== 0" /><br ng-if="tweet.sentiment.score !== 0" />
-              
+              <img ng-src="{{tweet.profile_image_url}}" />
               <p>{{tweet.text}}</p>
               <br/>
+              
+              <p ng-show="tweet.location">{{tweet.location}}</p>
+              <br/>
+              
               <cite ng-show="tweet.screen_name && tweet.created_at" title="Source Title">{{tweet.screen_name}} ( {{tweet.created_at}} )</cite>
         </div>
         
