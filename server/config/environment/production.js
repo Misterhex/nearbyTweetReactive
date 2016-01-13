@@ -18,7 +18,7 @@ module.exports = {
     uri: process.env.MONGOLAB_URI ||
     process.env.MONGOHQ_URL ||
     process.env.OPENSHIFT_MONGODB_DB_URL + process.env.OPENSHIFT_APP_NAME ||
-    'mongodb://localhost/nearbytweetreactive'
+    'mongodb://' + process.env.MONGO_PORT_27017_TCP_ADDR + ':' + process.env.MONGO_PORT_27017_TCP_PORT +'/nearbytweetreactive'
   },
   twit: {
     consumer_key: process.env.consumer_key
