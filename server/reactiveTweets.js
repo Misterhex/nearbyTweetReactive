@@ -42,7 +42,7 @@ var published = Rx.Observable.create(function (observer) {
 
         return reverseGeocode(latlng).then(function (location) {
             return {
-                "created_at": moment(status.created_at).format('MMMM Do YYYY, h:mm:ss a'),
+                "created_at": status.created_at,
                 "text": status.text,
                 "sentiment": sentiment(status.text),
                 "screen_name": status.user.screen_name,

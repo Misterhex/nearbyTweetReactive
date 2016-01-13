@@ -3,6 +3,10 @@
 angular.module('nearbyTweetReactiveApp')
   .filter('reverse', function() {
     return function(items) {
+
+	debugger;
+	console.log(typeof(items));
+	console.log("%j", items);
       return items.slice().reverse();
     };
   })
@@ -60,6 +64,11 @@ angular.module('nearbyTweetReactiveApp')
     $scope.tweets = [];
     
     socket.socket.on("tweet:new",  function(tweet){
+
+	debugger;
+	console.log(typeof(tweet));
+	console.log("%j", tweet);
+
       $scope.tweets.push(tweet);
     });
     
